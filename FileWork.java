@@ -28,4 +28,21 @@ public class FileWork {
             System.out.println("Возникла ошибка во время записи, проверьте данные.");
         }
     }
+
+    public String output() {
+        String result = "";
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String line = reader.readLine();
+            while (line != null) {
+                result = result.concat(line + "\n");
+                line = reader.readLine();
+            }
+            reader.close();
+        }
+        catch (IOException e) {
+            System.out.println("Возникла ошибка во время чтения, проверьте данные.");
+        }
+        return result;
+    }
 }
